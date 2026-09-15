@@ -30,7 +30,7 @@ const IPV4_ONLY_DOMAINS = ["twitter.com", "x.com", "t.co", "pbs.twimg.com", "vid
 //Cloudflare 配置
 const DEFAULT_CF_IP = "104.18.10.118";//默认CF优选IPv4
 const DEFAULT_CF_IP6 = "";//默认CF优选IPv6
-const CF_STATIC_DOMAINS = ["twimg.com", "twitter.com", "x.com", "t.co","cloudflare-dns.com", "pages.dev", "workers.dev", "cloudflare.com"];//不查询-直接返回优选结果的CF域名列表
+const CF_STATIC_DOMAINS = [ "twitter.com", "x.com", "t.co", "pbs.twimg.com", "video-s.twimg.com", "video.twimg.com","cloudflare-dns.com", "pages.dev", "workers.dev", "cloudflare.com"];//不查询-直接返回优选结果的CF域名列表
 //Meta 配置
 const DEFAULT_META_IP = "";//默认META优选IP
 const META_DOMAINS = ["facebook.com", "messenger.com", "instagram.com","whatsapp.com", "fb.com", "meta.com"];//不查询-直接返回优选结果的META域名列表
