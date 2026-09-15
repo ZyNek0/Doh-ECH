@@ -1499,17 +1499,21 @@ async function ensureCNDomainSet() {
  * 判断是否为国内域名
  * 匹配规则：完整域名在集合中，或域名以集合中某个 '.' 开头的后缀结尾。
  */
-function isCNDomain(domain) {
-    // cnDomainSet 在 ensureCNDomainSet 中已保证非空，直接使用
-    if (cnDomainSet.has(domain)) return true;
-    for (const item of cnDomainSet) {
-        if (item.startsWith('.') && domain.endsWith(item)) {
-            return true;
-        }
-    }
-    return false;
-}
 
+
+function isCNDomain(domain) {
+    // cnDomainSet 理论上已被 ensureCNDomainSet 同步初始化，此处兜底防御
+    if (!cnDomainSet) return false;
+    // 远端 direct-list.txt 是纯域名列表（不含前导点）。必须逐级剥离标签匹配后缀，
+    // 否则 www.taobao.com 这类子域名永不判为国内域名，分流形同虚设。
+    // 逐级查询同时把每次查询的 O(n) 全量扫描降为 O(标签数) 次哈希查找。
+    for (let d = domain; ; ) {
+        if (cnDomainSet.has(d) || cnDomainSet.has('.' + d)) return true;
+        const i = d.indexOf('.');
+        if (i === -1) return false;
+        d = d.slice(i + 1);
+    }
+}
 /**
  * 从 IPv6 前缀生成指定数量的随机 IPv6 地址
  * @param {string} prefixStr - 前缀字符串，如 "2001:4860:4827:7700::/64"
