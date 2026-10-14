@@ -142,12 +142,12 @@ function buildConfig(url, headers = null) {
         echDomain: get('ech', 'X-ECH') || 'cloudflare-ech.com',
         best: get('best', 'X-Best') || 'false', sub: get('sub', 'X-Sub'),
         exclude: get('exclude', 'X-Exclude'), shuffle: get('shuffle', 'X-Shuffle') || 'true',
-        area: get('area', 'X-Area'), enhance: get('enhance', 'X-Enhance') || 'off',
+        area: get('area', 'X-Area'), enhance: get('enhance', 'X-Enhance') || 'rule',
         rules: get('rules', 'X-Rules'), alpn: get('alpn', 'X-Alpn') || 'h3,h2',
         clientIp: get('clientIp', 'X-ClientIP') || '',
         no6: get('no6', 'X-No6') || 'false',   
         mandatory: get('mandatory', 'X-Mandatory') || 'alpn',
-        nocf6: get('nocf6', 'X-NoCF6') || 'true'
+        nocf6: get('nocf6', 'X-NoCF6') || 'false'
     };
     config.ip4 = prescreenIpList(config.ip4);//预筛选
     config.ip6 = prescreenIpList(config.ip6);
