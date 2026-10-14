@@ -157,7 +157,7 @@ Cloudflare Worker
 
 - **DOH地址(部分参数示例)**：  
   ```
-   "https://your-domain.pages.dev/ech?sub=ip-https://bestcf.pages.dev/gslege/Cfxyz.txt&best=true&enhance=full"
+   "https://your-domain.pages.dev/ech?ip4=cf优选ip1,ip2&ip6=ip3,ip4&best=true&enhance=full"
   ```
 - **配置 DoH 客户端**：  
   -- 将支持ECH的浏览器如Chrome/Firefox 的安全DNS设置为 DoH 地址设置：`https://你的域名/ech`，并可通过 URL 参数传递自定义内容。
