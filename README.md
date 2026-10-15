@@ -14,16 +14,21 @@
  **2.利用QUIC Client Initial 分片**: 
      Chrome/Firefox以及代理客户端等多已支持，为支持quic协议的网站返回alpn=h3，为指定站点返回alpn:h3,仅ipv6hints的HTTPS记录并屏蔽A记录等 实现直连访问受阻网站
 
-> **支持情况**：日常使用 **90%** 以上的网站都可直连
+> **支持情况**：日常使用 **90%** 以上的网站都可直连。
+> > 
 >  CF站点（含X.com),
 > Meta系,
 > Google系(含YouTube，Gemini 只需代理robinfrontend-pa.googleapis.com,signaler-pa.googleapis.com,其他全部IPV6直连),
-> reddit,twitch,discord,onlyfans等支持h3的其他网站，
+> reddit,twitch,discord,onlyfans
+> > 等支持h3的其他网站。
 
 ## 警告
 本项目由AI生成，仅供娱乐目的， **不得用于非法用途，请遵守当地法律法规合理学习和使用**，用于违反当地法律法规的非法用途造成的后果与本人本项目无关！
 
-
+## 小白上手：
+  ```
+   "https://your_pages_domain/ech?ip4=cf优选ip1,ip2&ip6=ip3,ip4&best=true&enhance=full"
+  ```
 ## 路由说明
 
 | 路径          | 说明                                                                 |
