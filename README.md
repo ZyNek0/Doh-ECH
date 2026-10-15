@@ -25,10 +25,50 @@
 ## 警告
 本项目由AI生成，仅供娱乐目的， **不得用于非法用途，请遵守当地法律法规合理学习和使用**，用于违反当地法律法规的非法用途造成的后果与本人本项目无关！
 
-## 小白上手：
+## 小白快速上手：
   ```
    "https://your_pages_domain/ech?ip4=cf优选ip1,ip2&ip6=ip3,ip4&best=true&enhance=full"
   ```
+---
+## 部署步骤
+
+### 1. 部署到 Cloudflare Pages
+- 进入 [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **Pages** → **创建项目**。
+- 上传资产或连接 Git 仓库，上传 `_worker.js` 至项目根目录。
+- 部署完成后，访问分配的域名/绑定的自定义域名 即可。
+
+### 2. 使用方法
+- **前端网页测试查询**：直接访问首页（`/`），输入域名、选择类型，可展开高级选项填入自定义参数后查询。
+
+- **DOH地址(部分参数示例)**：  
+  ```
+   "https://your_pages_domain/ech?ip4=优选ip1，ip2&ip6=ip3,ip4&best=true&enhance=full"
+  ```
+- **公益doh地址**：  
+  ```
+   "https://dohs.pages.dev/ech?cf=polestar.com&ip4=104.16.151.232,172.66.212.161&ip6=2606:4700:9c63:10cb:5eb5:7b4e:ca8f:5cfd&best=true&enhance=full"
+  ```  
+- **配置 DoH 客户端**：  
+  -- 将支持ECH的浏览器如Chrome/Firefox 的安全DNS设置为 DoH 地址设置：`https://你的域名/ech`，并可通过 URL 参数传递自定义内容。
+
+  
+  -- 使用代理工具：将需要直连的CF站点的域名解析服务器doh设置为`https://你的域名/ech`，并可通过请求头或 URL 参数传递自定义内容：
+  ```javascript
+  sing-box1.14配置示例：
+        {
+        "type": "h3",
+        "tag": "dns_ech",
+        "server": "自选优选ip或your pages domain",
+        "path": "/ech",            
+        "domain_resolver": "dns_direct",    
+        "tls": {
+          "enabled": true,
+          "server_name": "your pages domain",
+          "ech": {
+            "enabled": true,
+            "query_server_name": "cloudflare-ech.com"
+  ```
+---  
 ## 路由说明
 
 | 路径          | 说明                                                                 |
@@ -154,50 +194,7 @@ Cloudflare Worker
 ```
 
 ---
-## 部署步骤
 
-### 1. 部署到 Cloudflare Pages
-- 进入 [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **Pages** → **创建项目**。
-- 上传资产或连接 Git 仓库，上传 `_worker.js` 至项目根目录。
-- 部署完成后，访问分配的域名/绑定的自定义域名 即可。
-
-### 2. 使用方法
-- **前端网页测试查询**：直接访问首页（`/`），输入域名、选择类型，可展开高级选项填入自定义参数后查询。
-
-- **DOH地址(部分参数示例)**：  
-  ```
-   "https://your-domain.pages.dev/ech?ip4=cf优选ip1,ip2&ip6=ip3,ip4&best=true&enhance=full"
-  ```
-- **配置 DoH 客户端**：  
-  -- 将支持ECH的浏览器如Chrome/Firefox 的安全DNS设置为 DoH 地址设置：`https://你的域名/ech`，并可通过 URL 参数传递自定义内容。
-
-  
-  -- 使用代理工具：将需要直连的CF站点的域名解析服务器doh设置为`https://你的域名/ech`，并可通过请求头或 URL 参数传递自定义内容：
-  ```javascript
-  sing-box1.14配置示例：
-        {
-        "type": "h3",
-        "tag": "dns_ech",
-        "server": "自选优选ip或your pages domain",
-        "path": "/ech",            
-        "domain_resolver": "dns_direct",    
-        "tls": {
-          "enabled": true,
-          "server_name": "your pages domain",
-          "ech": {
-            "enabled": true,
-            "query_server_name": "cloudflare-ech.com"
-          }
-        },
-        "headers": {
-          "X-Alpn": "h3,h2",
-          "X-Best": "true",
-          "X-Enhance": "full",
-          "X-No6": "true",
-          "X-Sub": "cf-https://bestcf.pages.dev/vps789/top10.txt"
-        }
-      }  
-  ```
 ## 注意事项
 - **子请求上限**：免费计划每日 10 万次子请求，已通过缓存降低使用量，正常个人使用一般不会超出。
 - **ECH 有效性**：Meta 的 ECH 为固定配置（可能会过期），Cloudflare 的 ECH 从指定域名动态获取，可自定义 `ech` 参数。
