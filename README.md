@@ -25,7 +25,7 @@
 > reddit,twitch,discord,onlyfans
 >  等支持h3的其他网站。
 > 
-** 连通性测试**
+**连通性测试**
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/rosenii/imgs/refs/heads/main/test.jpg" alt="test" width="600">
