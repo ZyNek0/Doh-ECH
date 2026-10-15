@@ -49,13 +49,13 @@
    "https://dohs.pages.dev/ech?cf=polestar.com&ip4=104.16.151.232,172.66.212.161&ip6=2606:4700:9c63:10cb:5eb5:7b4e:ca8f:5cfd&best=true&enhance=full"
   ```  
 - **配置 DoH 客户端**：  
-  -- 将支持ECH的浏览器如Chrome/Firefox 的安全DNS设置为 DoH 地址设置：`https://你的域名/ech`，并可通过 URL 参数传递自定义内容。
+  -- 将支持ECH的浏览器如Chrome/Firefox 的安全DNS设置为 DoH 地址：`https://你的域名/ech`，并可通过 URL 参数传递自定义内容。
 
   
   -- 使用代理工具：将需要直连的CF站点的域名解析服务器doh设置为`https://你的域名/ech`，并可通过请求头或 URL 参数传递自定义内容：
   ```javascript
   sing-box1.14配置示例：
-        {
+     {
         "type": "h3",
         "tag": "dns_ech",
         "server": "自选优选ip或your pages domain",
@@ -67,19 +67,20 @@
           "ech": {
             "enabled": true,
             "query_server_name": "cloudflare-ech.com"}
-         "headers": {
-           "X-Alpn": "h3,h2",
-           "X-Best": "true",//全局cf站点使用优选ip
-           "X-No6" : "true",//全局禁用AAAA解析
-           "X-Enhance": "full",
-           "X-Sub":"cf-https://优选域名.txt,ip-https://优选ip.txt",           
-           "X-CF":"polestar.com,visa.cn",//优选域名
-           "X-Area":"移动,hk,新加坡",//优选订阅过滤
-           "X-Ip4": "104.16.151.232,172.66.212.161",优选ipv4
-           "X-Ip6": "2606:4700:9c63:10cb:5eb5:7b4e:ca8f:5cfd",//优选ipv6
-           "X-Exclude": "BestCF.pages.dev,162.159.197.1"//排除域名/ip
+          "headers": {
+            "X-Alpn": "h3,h2",
+            "X-Best": "true",//全局cf站点使用优选ip
+            "X-No6" : "true",//全局禁用AAAA解析
+            "X-Enhance": "full",
+            "X-Sub":"cf-https://优选域名.txt,ip-https://优选ip.txt",           
+            "X-CF":"polestar.com,visa.cn",//优选域名
+            "X-Area":"移动,hk,新加坡",//优选订阅过滤
+            "X-Ip4": "104.16.151.232,172.66.212.161",优选ipv4
+            "X-Ip6": "2606:4700:9c63:10cb:5eb5:7b4e:ca8f:5cfd",//优选ipv6
+            "X-Exclude": "BestCF.pages.dev,162.159.197.1"//排除域名/ip
            }
-      }
+        }
+    }
   ```
 ---  
 ## 路由说明
