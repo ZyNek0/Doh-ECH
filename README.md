@@ -36,7 +36,7 @@
 
 ## 小白快速上手：
   ```
-   "https://your_pages_domain/ech?ip4=cf优选ip1,ip2&ip6=ip3,ip4&best=true&enhance=full"
+   "https://your_pages_domain/ech?cf=优选域名&ip4=cf优选ip1,cf优选ip2&ip6=xxxx&best=true&enhance=full"
   ```
 ---
 ## 部署步骤
