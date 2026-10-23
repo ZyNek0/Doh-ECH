@@ -55,7 +55,13 @@ const BUILTIN_HINTS = [
         ips:[],
         noA:false,
         noAAAA:false       
-    },    
+    }, 
+    {
+        // Google地区分组
+        domains: ["*.google.com.hk","*.google.com.tw","*.google.co.jp","*.google.co.kr","*.google.com.sg","*.google.co.id","*.google.co.in","*.google.com.my","*.google.co.th","*.google.com.vn","*.google.com.ph","*.google.com.pk","*.google.com.bd","*.google.com.kh","*.google.com.sa","*.google.ae","*.google.co.il","*.google.com.tr","*.google.kz","*.google.lt","*.google.co.uk","*.google.de","*.google.fr","*.google.it","*.google.es","*.google.pt","*.google.nl","*.google.be","*.google.ch","*.google.at","*.google.se","*.google.no","*.google.dk","*.google.fi","*.google.ie","*.google.pl","*.google.cz","*.google.gr","*.google.com.ua","*.google.ru","*.google.com","*.google.ca","*.google.com.mx","*.google.com.br","*.google.com.ar","*.google.cl","*.google.com.co","*.google.com.pe","*.google.com.ec","*.google.com.uy","*.google.co.ve","*.google.co.cr","*.google.com.au","*.google.co.nz","*.google.com.fj","*.google.co.za","*.google.com.eg","*.google.com.ng","*.google.co.ke","*.google.com.gh","*.google.co.ma","*.google.com.et"],
+        ips: ["2001:4860:4826:7700::/64", "2001:4860:4827:7700::/64", "2001:4860:4828:7700::/64", "2001:4860:4829:7700::/64", "2001:4860:482a:7700::/64", "2001:4860:482b:7700::/64", "2001:4860:482c:7700::/64", "2001:4860:482d:7700::/64"],
+        noA: true,    noAAAA: false      
+    },
     {
         // GWS (Google Web Server) 分类组：承载网页主体、核心搜索 API、人机验证和账户安全登录 && GGC
         domains: [ "*.google.com.hk", "*.google.com","*.googleapis.com", "*.services.googleapis.cn", "*.services.google.com", "*.accounts.google.com","*.youtube.com", "*.youtube-nocookie.com", "*.googleapis.cn","*.recaptcha.net"],
@@ -69,6 +75,7 @@ const BUILTIN_HINTS = [
         ips: [],
         noA: true,  noAAAA: false   
     },
+    
     {
         // GGC (Google Global Cache) 分类组：专门分流并加速网页样式、Web 字体、浏览器更新及视频封面等静态资源
         domains: ["*.googlesource.com","*.gstatic.com", "*.googleusercontent.com", "*.ytimg.com", "*.ggpht.com", "*.gvt1.com","*.gvt2.com","*.googleadservices.com","*.googlesyndication.com","*.google-analytics.com","*.crashlytics.com","firebaseio.com","firebasedatabase.app"],
